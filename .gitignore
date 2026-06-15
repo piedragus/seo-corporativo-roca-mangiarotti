@@ -1,0 +1,22 @@
+# Logs generados por los scripts
+*.log
+woo_generator.log
+link_auditor.log
+
+# CSV con links propuestos (pueden tener info del sitio)
+links_propuestos.csv
+
+# Credenciales y configuración local
+.env
+config.py
+secrets.py
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
