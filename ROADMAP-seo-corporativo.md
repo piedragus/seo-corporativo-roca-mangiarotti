@@ -6,7 +6,7 @@ Roca Mangiarotti SRL es la razón social que agrupa las distintas marcas comerci
 
 Este roadmap reemplaza el enfoque anterior del proyecto (herramientas SEO solo para rocaingenieria.com.ar) por un enfoque de grupo, cubriendo las cuatro marcas.
 
-## Las cuatro marcas
+## Las cinco marcas
 
 ### 1. Roca Ingeniería (rocaingenieria.com.ar)
 - Rol: cabecera del grupo, industrial pesado, equipos.
@@ -30,6 +30,23 @@ Este roadmap reemplaza el enfoque anterior del proyecto (herramientas SEO solo p
 - Feature clave: cotizador simple online (precio de hierros, costo por estribo, etc.) para simplificar y agilizar la venta directa.
 - Diferenciación clara de Tek-Met: Armaduras Roca = estándar/rápido/chico. Tek-Met = a medida/grande/bajo plano.
 - Mantiene el dominio actual (no se da de baja); se reposiciona el contenido.
+
+### 5. Tekton Construcciones (nombre nuevo, dominio a definir junto con Tek-Met)
+- Rol: obra civil. Ver ARQUITECTURA-OBRA-CIVIL.md para el detalle completo de los 6 rubros
+  (suelos y fundaciones, plateas de hormigon, canaletas y complementarios, modificacion/
+  mantenimiento de galpones existentes, montaje de galpones nuevos completos, reparacion de
+  instalaciones existentes).
+- Vinculada por nombre con Tek-Met (ambas comparten la raiz griega "tekton" = constructor/
+  artesano de estructura bajo plano). Son las dos caras de la misma idea tecnica: una en metal,
+  otra en obra civil.
+- No lleva "Roca" en el nombre.
+
+## Resumen de marcas (nombres definitivos)
+1. Roca Ingeniería — rocaingenieria.com.ar
+2. Línea Magna — lineamagna.com.ar
+3. Tek-Met (razón social: Tekton Metalúrgica) — dominio pendiente
+4. Armaduras Roca — armadurasroca.com.ar (reconvertida a tienda)
+5. Tekton Construcciones — dominio pendiente (registrar junto con el de Tek-Met)
 
 ## Estructura de interlinking
 

@@ -1,4 +1,4 @@
-# Arquitectura Obra Civil (cuarta marca del grupo, nombre pendiente)
+# Arquitectura Obra Civil — Tekton Construcciones
 
 ## Rol dentro del grupo
 Cuarta unidad de negocio, separada de Tek-Met (metalurgica) y de Armaduras Roca (tienda de
@@ -23,14 +23,16 @@ completos.
 ## Explicitamente fuera de alcance
 - Montaje electromecanico (no es el fuerte del equipo, se descarta).
 
-## Nombre de marca (pendiente de decision final)
-Buscando algo asociado a cimiento/base/firmeza (a diferencia de Tek-Met que uso raiz de
-estructura/plano). Opciones sobre la mesa:
-- **Fundamen** (Obras) — raiz latina de "fundamento", cimiento/base.
-- **Solidum** (Construcciones) — raiz latina de "solido", firme.
-- **Edra** (Civil) — raiz griega de "asiento/base firme" (misma raiz de "catedra").
+## Nombre de marca: DEFINIDO
 
-Una vez decidido el nombre, se registran los dominios de Tek-Met y de esta marca juntos.
+**Tekton Construcciones**. Se eligio vincular por nombre con Tek-Met (metalurgica), ya que
+ambas comparten la raiz griega "tekton" (constructor / artesano de estructura bajo plano,
+misma raiz de donde viene "arquitecto"). Son las dos caras de la misma idea: Tek-Met en metal,
+Tekton Construcciones en obra civil. A diferencia de Linea Magna (que se mantuvo sin vinculo de
+nombre), en este caso el vinculo por nombre tiene sentido porque son literalmente
+complementarias en el mismo tipo de trabajo tecnico.
+
+Pendiente: registrar los dominios de Tek-Met y Tekton Construcciones juntos.
 
 ## Ver tambien
 - ARQUITECTURA-TEKMET.md — contraparte metalurgica (fabricacion bajo plano, estructuras para
