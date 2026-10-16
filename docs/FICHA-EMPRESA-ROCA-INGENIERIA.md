@@ -3,13 +3,13 @@ Fuente: rocaingenieria.com.ar (datos del sitio, 16/oct/2026). Los campos marcado
 
 ## Datos fijos (usar SIEMPRE igual en todos los portales — NAP)
 - **Nombre comercial:** Roca Ingeniería
-- **Razón social / CUIT:** ⚠ completar (el CUIT 23-32507446-9 que figura en los repos es de Agustín Roca como titular de Armaduras Roca; no asumir que es el de Roca Ingeniería)
-- **Dirección planta/oficinas:** Mendoza 4053, San Justo, Buenos Aires, Argentina  ⚠ confirmar cuál es la sede legal; el sitio también lista Doctor Eizaguirre 737, San Justo
+- **Razón social / CUIT:** CUIT 23-32507446-9 (confirmado por Agustín, 16/oct/2026). Razón social: según constancia de AFIP/ARCA (titular Agustín Roca).
+- **Dirección sede legal:** Doctor Eizaguirre 737, San Justo, Buenos Aires, Argentina (confirmado por Agustín). Planta: Mendoza 4053, San Justo.
 - **Teléfono / WhatsApp:** +54 9 11 5005-2904
 - **Email:** contacto@rocaingenieria.com.ar
 - **Web:** https://rocaingenieria.com.ar/
 - **Horarios:** Planta industrial 8:00–13:00 y 14:00–17:00; oficinas 9:00–18:00 (lunes a viernes ⚠ confirmar)
-- **Año de inicio:** ⚠ "+15 años en el mercado" (completar año)
+- **Año de inicio:** no se informa; usar "+15 años en el mercado".
 - **Certificación:** ISO 9001:2015 (según el sitio) ⚠ tener el certificado a mano
 - **Redes:** Facebook, Instagram (@rocaa_in…), LinkedIn (ver enlaces del pie del home)
 - **Empresas del grupo:** Línea Magna (lineamagna.com.ar), Armaduras Roca (armadurasroca.com.ar)
