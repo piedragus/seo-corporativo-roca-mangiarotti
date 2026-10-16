@@ -37,6 +37,25 @@ Empresa de referencia: Roca Ingeniería, San Justo, Buenos Aires (granalladoras,
 | Europages, ThomasNet, Cylex, Yelu, Infobel | Fichas básicas gratuitas habituales | V |
 | LinkedIn Company Page, Facebook Page | Gratis; ya hay links desde el home | existe (V actualizar) |
 
+### Generales Argentina
+| Portal | Nota | Estado |
+|---|---|---|
+| Argentino (argentino.com.ar) | Directorio de empresas, comercios y profesionales; publicar la ficha es gratis, con opiniones | C (según su sitio) |
+| Banco de la Nación – Oferta Exportable | Directorio de exportadores, sin costo, pero para **clientes del BNA**; se adhiere por formulario | C |
+| ArgentinaTradeNet (Cancillería) – Directorio de Exportadores | Formulario de registro; +270 firmas de bienes de capital | C (existe); V (costo) |
+| CompraEmprendedor.com.ar (UER) | Orientado a emprendedores; nota de época de pandemia, puede estar inactivo | V |
+| Guía de cámaras empresarias (Cancillería, directorio de contactos) | Para contactar cámaras de comercio/industria | C (existe) |
+
+### Generales Sudamérica / multi-país
+| Portal | Nota | Estado |
+|---|---|---|
+| Proveedores de América | Marketplace B2B de Latinoamérica con +18.000 empresas; no se verificó el alta ni el costo | V |
+| Kompass (con ficha por país) | B2B mundial; ficha básica gratuita habitual, premium paga | V |
+| Europages | B2B, fichas gratuitas básicas y planes pagos | V |
+| Cámaras de comercio de cada país (Chile CCS, Perú CCL, Colombia, Brasil CNI) | Directorios de socios, normalmente con cuota | V |
+| Merca2.0 Guía de Compras, Mercado Negro | Solo marketing/publicidad: **no aplican** | C |
+| CIAL Dunsguide, AméricaEconomía, InfobelPRO, D&B | Bases de datos **pagas** (no son alta gratuita; D&B se actualiza con el D-U-N-S, que sí se puede pedir gratis) | C |
+
 ## 5. Lo que realmente mueve la aguja
 1. **Registro Federal de Proveedores Mineros** (gratis, público, elegible): empezar por acá.
 2. **Alta de proveedor en operadoras** (YPF, mineras grandes): necesita documentación (seguridad, calidad, ART).
