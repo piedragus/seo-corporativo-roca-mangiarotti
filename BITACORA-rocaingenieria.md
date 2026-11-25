@@ -278,3 +278,68 @@ No había links `tel:` ni widgets con el número viejo. Los WhatsApp ya usaban 5
   - Backup en `backups-roca/20261124/wpcode_org_backup.json`.
   - Revertir: `wp eval-file …/wpcode_org_20261124.php revertir`, que reactiva el snippet por SQL, y borrar `roca-seo-org-datos.php`.
 - **Verificado:** un solo Organization, con los 3 datos y el teléfono único, en la home, Productos, Nosotros, `/granalla-de-acero/` y la ficha angular. Se purgó WP Rocket y se precargó el sitemap: 52 URLs, todas 200.
+
+## 2026-11-25 — Pendientes técnicos sin Agustín (tipo E, categoría "62", H1, CLS de la home, links)
+
+No se tocaron cuentas de Google, Merchant ni Search Console (las maneja otra sesión), ni precios, stock, usuarios o credenciales. No se borró contenido.
+
+### Backup y cómo revertir
+
+Todo en `/www/rocaingenieria.com.ar/backups-roca/20261125/` (permisos 700):
+- `db-antes.sql.gz`: dump completo previo (`wp db export --ssl=0`).
+- `mu-plugins-antes/`: copia de los mu-plugins previos. `mu-plugins-nuevos/`: copia de los nuevos.
+- `pendientes_backup.json`: contenido anterior de los posts 26714, 26601, 1599, 1610 y de la descripción del term 62.
+- **Revertir la base:** `wp eval-file ../backups-roca/20261125/pendientes_roca_20261125.php revertir` (script en `tools/scripts-wp/`).
+- **Revertir los mu-plugins:** borrar `roca-h1.php`, `roca-cat-oculta2.php` y/o `roca-velocidad-home.php` (1-2 min en todos los nodos) y purgar WP Rocket.
+
+### 1. Granalla tipo E / durezas > 60 HRC
+- Categoría Abrasivos (term 62): "40 a 68 HRC" → "40 a 60 HRC; otras durezas, bajo consulta".
+- Ficha angular (26714): se sacó el ítem "Corte de piedra y granito (durezas altas)".
+- Barrido de todo el sitio (contenido, metas, términos, opciones, HTML de las 52 URLs, schema y los 14 PDFs enlazados). Queda, a propósito o para decidir:
+  - `/granalla-de-acero/` y el folleto técnico PDF: tipo **D 577–720 Hv (54–61 HRC)**. Es la ficha de la granalla D (tipo que sí se vende); el tope de 61 HRC pasa apenas de 60. No lo cambié para no alterar un dato técnico: **decide Agustín**.
+  - Guías de normas en PDF (J1993 rango H "60 HRC o más", J827 "40 a 65", J1830 "57 a 63", guía general "55–62"): por la regla del 2026-10-01 las guías deben ser completas aunque incluyan productos que no se venden. No se tocaron.
+  - Turbina T4: "placas de desgaste de fundición templada (60-64 Hrc)": es la dureza de una pieza del equipo, no de la granalla. Sin cambios.
+  - Las copias viejas en opciones `post_content_bak*_20261001` (no se publican) siguen nombrando GH/E; no se borraron.
+
+### 2. Durezas GL/GP (fichas) vs C/D (página madre)
+No hay fuente para GL/GP en el sitio ni en los repos. La tabla C/D de la página madre sale del catálogo del proveedor (`~/folletos/src/cym/…angular-grit-ficha-tecnica…pdf`: C 48-52, D 54-61, H >60). GL/GP es nomenclatura SAE J1993 (L 54-61, la guía propia no define GP). **No se unificó**: la ficha angular sigue diciendo "GL/GP (53-60 HRC aprox.)". Decide Agustín.
+
+### 3. Categoría vacía "62" (term 107, slug `62`, 0 productos)
+Mu-plugin `roca-cat-oculta2.php`: se excluye de `get_terms()` en el frontend (filtro Themify de /productos/ y categorías, listados), `/categoria-producto/62/` queda `noindex, follow` y fuera del sitemap de Yoast. No se borró.
+- Incidente: la v1 (`roca-cat-oculta.php`) la excluía también al resolver la URL y `/categoria-producto/62/` dio **404 unos 3 minutos** (11:36-11:40 UTC). Se reemplazó por la v2, que no toca las búsquedas por slug/nombre/ID. Ninguna otra URL se afectó.
+
+### 4. CLS de la home (mu-plugin `roca-velocidad-home.php`)
+Divi imprimía el CSS de diseño de los módulos (`et-builder-module-design-tb-773-tb-1150-1599-cached-inline-styles`, 48 KB) al final del `<body>`; la fila `#Fondo` de la primera sección saltaba. El mu-plugin mueve ese bloque, sin modificarlo, al final del `<head>` solo en la home (buffer de salida antes de WP Rocket). **No** se activó "Static CSS File Generation". Capturas antes/después idénticas (celular y escritorio).
+
+| Home (Lighthouse 12 móvil, 3 corridas, cacheada) | Antes | Después |
+|---|---|---|
+| CLS | 0,361 | **0** |
+| Rendimiento | 73-74 | **89-91** |
+| LCP | 3,4-3,5 s | 3,35 s |
+
+### 5. Un solo H1 (mu-plugin `roca-h1.php`)
+Antes (DOM renderizado): 20 URLs del sitemap sin H1 (17 categorías, Nosotros, Políticas de calidad, Servicio técnico, Productos, Repuestos) y 9 fichas con 2 H1 (título de la plantilla + H1 en la descripción).
+- Si hay más de un H1, los siguientes pasan a H2 (solo en la salida HTML).
+- Si no hay ninguno, el primer párrafo del primer módulo de texto (el título visible: "Quiénes somos", "Políticas de calidad", "Nuestros productos"…) pasa a `<h1>` con estilo heredado: se ve igual (capturas comparadas). En categorías el H1 dice "Nuestros productos: **<categoría>**".
+- Las descripciones de categoría que se insertan por JS con un H1 pasan a H2.
+
+### 6. Links internos
+- Botón "Cotizar por WhatsApp" de la Válvula dosificadora (26601): el href era solo el texto (`Hola%2C…`), daba 404. Ahora `https://wa.me/541139016625?text=…`, como las fichas de granalla.
+- Home (1599) y Nosotros (1610): botones a `/nosotros`, `/productos`, `/repuestos` y `/servicios` (301) ahora apuntan directo con barra final (`/servicios` → `/mantenimiento-industrial-integral/`).
+
+### Hallazgo (no resuelto, para decidir)
+Las descripciones de categoría (con sus textos SEO) las inserta un snippet por JS **dentro de un `rocketlazyloadscript`**: el "Delay JS" de WP Rocket no las ejecuta hasta que el usuario interactúa, así que Google probablemente no las ve. Arreglo posible: excluir ese script del Delay JS (`rocket_delay_js_exclusions`) o imprimirlas en el servidor. No lo hice porque puede agregar CLS al final de la página y conviene medirlo aparte.
+
+### Barrido final del sitemap
+Ver la tabla al final de esta entrada.
+
+| Barrido (52 URLs del sitemap, después de purgar y precargar) | Antes | Después |
+|---|---|---|
+| Respuesta 200 | 52/52 | 52/52 |
+| Sin H1 / con 2 H1 (DOM renderizado) | 20 / 9 | **0 / 0** |
+| Sin title / sin meta description | 0 / 0 | 0 / 0 |
+| Organization o Product duplicados | 0 | 0 |
+| Links internos rotos | 1 (WhatsApp de la válvula) | **0** (159 links) |
+| Links internos que pasan por 301 | 4 | **0** |
+
+Capturas antes/después en frankia: `~/capturas-20261125/` (cmp-*.png). Purgados WP Rocket y la caché de Divi, sitemap precargado (escritorio y celular).
