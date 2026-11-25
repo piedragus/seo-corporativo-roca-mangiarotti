@@ -59,3 +59,10 @@ pip install requests woocommerce
 2. Correr `woo_content_generator.py` — genera contenido y páginas de catálogo
 3. Revisar drafts en wp-admin → aprobar y publicar lo que está bien
 4. Periódicamente correr `link_auditor.py analyze` → revisar CSV → `link_auditor.py apply`
+
+## `tools/` — mantenimiento SEO del servidor (rocaingenieria.com.ar)
+
+Scripts y mu-plugins de la ronda SEO del 2026-11-24 (ver `BITACORA-rocaingenieria.md`, que también explica cómo revertir):
+- `tools/scripts-wp/`: scripts de `wp eval-file` (aplicar, revertir, borradores, links).
+- `tools/mu-plugins/`: copia de los mu-plugins instalados en `wp-content/mu-plugins/`.
+- `tools/indexnow_ping.sh`, `tools/calentar_cache.sh`, `tools/auditoria_crawl.py`, `tools/extraer_css_header_divi.py`.
