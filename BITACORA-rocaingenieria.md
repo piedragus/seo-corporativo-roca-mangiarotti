@@ -343,3 +343,22 @@ Ver la tabla al final de esta entrada.
 | Links internos que pasan por 301 | 4 | **0** |
 
 Capturas antes/después en frankia: `~/capturas-20261125/` (cmp-*.png). Purgados WP Rocket y la caché de Divi, sitemap precargado (escritorio y celular).
+
+## 2026-11-25 (tarde) — Feed de Merchant: precio con IVA y descripciones sin doble escape
+
+**Backup** en `/www/rocaingenieria.com.ar/backups-roca/20261125/feed-iva/`: `mu-plugins-antes/`, `feed-antes.xml` (feed tal como salía), copia del mu-plugin nuevo.
+**Revertir:** `bash /www/rocaingenieria.com.ar/backups-roca/20261125/feed-iva/revertir_feed_iva_20261125.sh aplicar` (sin `aplicar` simula). Copia en `tools/scripts-wp/revertir_feed_iva_20261125.sh`.
+
+mu-plugin nuevo `roca-feed-google-iva.php`, copia en `tools/mu-plugins/`. Es un archivo aparte por el opcache. Se engancha en `init` con prioridad 19, antes que `roca-feed-google.php` (20), con su propio generador y el transient `roca_feed_google_iva`. `roca-feed-google.php` queda instalado pero ya no responde.
+1. **`g:price` = `1.63 USD`:** 1,35 × 1,21 = 1,6335, redondeado.
+   - El comentario final del XML ahora dice "con IVA 21 % incluido (USD 1,35 + IVA)".
+   - Si algún día se define `ROCA_FEED_ARS_POR_USD`, el precio en ARS también sale con IVA.
+   - **`unit_pricing_measure`:** quedó `1 kg` / `1 kg`, porque el precio es por kg y el precio unitario sale igual (1,63 USD/kg). No hacía falta cambiarlo.
+   - **Web sin cambios:** `/granalla-de-acero/` sigue con "USD 1,35 por kg + IVA". Ojo: Merchant compara el precio del feed con la landing. Si marca "precio no coincide", hay que mostrar en la ficha también el precio con IVA.
+2. **Descripciones:**
+   - Antes salían `Densidad &amp;gt; 7.4` (en las 2 fichas) y `&amp;nbsp;` (esférica).
+   - Ahora: se quitan los tags, se decodifican las entidades (`html_entity_decode`, también las dobles), el nbsp pasa a espacio y se escapa una sola vez. Resultado: `Densidad &gt; 7.4` (es decir, "> 7.4").
+   - El orden es strip → decode, y no al revés: si se decodifica primero, un "<" de texto (por ejemplo "< 60 HRC") haría que strip_tags se coma el resto.
+   - "Consultá descuentos por volumen" sigue igual.
+
+El diff contra `feed-antes.xml` muestra solo las 2 descripciones, los 2 precios y el comentario. XML válido, 2 ítems, 0 entidades dobles. WP Rocket purgado. Verificado con curl: 10 de 10 respuestas con 1.63 USD.
