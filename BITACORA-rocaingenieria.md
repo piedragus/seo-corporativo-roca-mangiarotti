@@ -362,3 +362,24 @@ mu-plugin nuevo `roca-feed-google-iva.php`, copia en `tools/mu-plugins/`. Es un 
    - "Consultá descuentos por volumen" sigue igual.
 
 El diff contra `feed-antes.xml` muestra solo las 2 descripciones, los 2 precios y el comentario. XML válido, 2 ítems, 0 entidades dobles. WP Rocket purgado. Verificado con curl: 10 de 10 respuestas con 1.63 USD.
+
+## 2026-11-25 (tarde) — Precio de la granalla con y sin IVA en la web y en el schema
+
+Pedido de Agustín: que la web muestre las dos cifras, para que coincida con el feed de Merchant (1.63 USD con IVA).
+
+**Backup** en `/www/rocaingenieria.com.ar/backups-roca/20261125/precio-iva-web/`: `db-antes.sql.gz` (`wp db export --ssl=0`), `originales.json` (contenidos y metas tocados), `llms-antes.txt`, `mu-plugins-antes/`.
+**Revertir:** `bash /www/rocaingenieria.com.ar/backups-roca/20261125/precio-iva-web/revertir_precio_iva_web_20261125.sh aplicar` (sin `aplicar` simula). Copias en `tools/scripts-wp/` (`precio_iva_web_20261125.php`, que también simula/aplica/revierte, y `revertir_precio_iva_web_20261125.sh`).
+
+El precio de WooCommerce de las fichas está vacío (`_price` sin valor, impuestos desactivados): el precio solo existe en el texto y en el schema. No se tocó WooCommerce.
+
+Dónde figuraba el precio y qué dice ahora (cambios por base de datos, sin editar PHP existente):
+- **Fichas esférica (25760) y angular (26714):** "Precio: USD 1,35 por kg + IVA (USD 1,63 por kg con IVA incluido). Entrega en AMBA... Consultá descuentos por volumen."
+- **`/granalla-de-acero/` (26873):** bajo "Desde 1,35 USD por kg + IVA" se agregó la línea "USD 1,63 por kg con IVA incluido"; sigue "Descuentos por volumen: consultanos".
+- **Metas Yoast** (fichas, madre y categoría 105): "USD 1,35/kg + IVA (USD 1,63 con IVA)", 154–162 caracteres, con "Consultá descuentos por volumen" donde ya estaba. Se borraron sus filas de `yoast_indexable` para que se regeneren.
+- **Borradores 26985 y 26986:** misma aclaración entre paréntesis.
+- **`llms.txt`:** las dos cifras.
+- **Home:** no muestra precio, no se tocó.
+
+**Schema Product:** mu-plugin nuevo `roca-seo-precio-iva.php` (copia en `tools/mu-plugins/`), filtro `wpseo_schema_graph` con prioridad 30, después de `roca-seo-schema.php`. Deja `offers.price` = `1.63` y `UnitPriceSpecification` 1.63 USD/KGM con `valueAddedTaxIncluded: true`, igual que el feed. Sin tramos ni tipo E.
+
+Verificado con curl, después de purgar y precargar WP Rocket: fichas, madre, categoría, `llms.txt` y metas con las dos cifras; JSON-LD de las 2 fichas con `"price":"1.63"` y `"valueAddedTaxIncluded":true`; feed con `1.63 USD`. Capturas de celular en frankia: `~/capturas-20261125/iva-madre-m.png` e `iva-esf-m.png`.
