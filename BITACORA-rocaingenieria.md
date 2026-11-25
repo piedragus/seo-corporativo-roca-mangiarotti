@@ -265,3 +265,16 @@ No había links `tel:` ni widgets con el número viejo. Los WhatsApp ya usaban 5
 **Verificado con curl:** 0 apariciones del número viejo en la home, Nosotros, Repuestos, Servicio técnico y Granalla, y en todas responde 200. WP Rocket y la caché de Divi se purgaron y se volvió a precargar el sitemap.
 
 **Ojo (pendiente):** el snippet WPCode 26851 emite un **segundo** Organization en todas las páginas, además del de Yoast. Tiene `legalName`, `taxID` y `foundingDate`. Conviene pasar esos datos al de Yoast y desactivar el snippet, para que no haya dos entidades distintas.
+
+## 2026-11-24 (más tarde) — Un solo Organization
+
+- El snippet WPCode 26851 «Schema Organization» emitía un segundo Organization en todas las páginas. Sus datos pasaron al Organization de Yoast con el mu-plugin `roca-seo-org-datos.php`:
+  - `legalName` "Roca Agustin Federico";
+  - `taxID` 23-32507446-9;
+  - `foundingDate` 2021.
+- El snippet se **desactivó sin borrarlo**: quedó en `post_status` draft con `WPCode_Snippet::force_deactivate()`. Se usó ese método porque `deactivate()` pide permisos de usuario y en WP-CLI no los hay.
+  - WPCode puede mostrar en el admin un aviso de "snippet desactivado"; es esperado.
+- **Script:** `tools/scripts-wp/wpcode_org_20261124.php`.
+  - Backup en `backups-roca/20261124/wpcode_org_backup.json`.
+  - Revertir: `wp eval-file …/wpcode_org_20261124.php revertir`, que reactiva el snippet por SQL, y borrar `roca-seo-org-datos.php`.
+- **Verificado:** un solo Organization, con los 3 datos y el teléfono único, en la home, Productos, Nosotros, `/granalla-de-acero/` y la ficha angular. Se purgó WP Rocket y se precargó el sitemap: 52 URLs, todas 200.
