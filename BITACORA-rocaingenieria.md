@@ -247,3 +247,21 @@ Las páginas estaban cacheadas por WP Rocket. Se hicieron 2 corridas por página
 | Links internos rotos (404) | 0 | 0 |
 | Links internos que pasan por 301 | 3 | 0 |
 
+
+## 2026-11-24 (más tarde) — Teléfono único +54 9 11 3901-6625 (decisión de Agustín)
+
+Se reemplazó el +54 9 11 5005-2904 en:
+- la home (1599), Servicio técnico (26051) y el layout de Divi «Sección Contacto» (26177), que mostraban `+549-1150052904`;
+- la caché `_et_pb_truncate_post` de 1599, 1610, 1620 y 26051;
+- el snippet de WPCode «Schema Organization» (26851, y su caché en la opción `wpcode_snippets`);
+- el schema LocalBusiness de Yoast. Lo corrige el mu-plugin nuevo `roca-seo-telefono.php`, porque el hosting no recarga PHP editados; la copia del repo de `roca-seo-schema.php` también quedó con el número nuevo.
+
+No había links `tel:` ni widgets con el número viejo. Los WhatsApp ya usaban 541139016625.
+
+**Script:** `tools/scripts-wp/telefono_unico_20261124.php`.
+- Backup en `backups-roca/20261124/telefono_backup.json`.
+- Revertir: `wp eval-file …/telefono_unico_20261124.php revertir` y borrar `roca-seo-telefono.php`.
+
+**Verificado con curl:** 0 apariciones del número viejo en la home, Nosotros, Repuestos, Servicio técnico y Granalla, y en todas responde 200. WP Rocket y la caché de Divi se purgaron y se volvió a precargar el sitemap.
+
+**Ojo (pendiente):** el snippet WPCode 26851 emite un **segundo** Organization en todas las páginas, además del de Yoast. Tiene `legalName`, `taxID` y `foundingDate`. Conviene pasar esos datos al de Yoast y desactivar el snippet, para que no haya dos entidades distintas.

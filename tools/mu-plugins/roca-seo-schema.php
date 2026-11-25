@@ -29,7 +29,7 @@ add_filter( 'wpseo_schema_organization', function ( $data ) {
 		'addressCountry'  => 'AR',
 	);
 	$data['geo']       = array( '@type' => 'GeoCoordinates', 'latitude' => -34.6717565, 'longitude' => -58.5451022 );
-	$data['telephone'] = '+54 9 11 5005-2904';
+	$data['telephone'] = '+54 9 11 3901-6625';
 	$data['email']     = 'contacto@rocaingenieria.com.ar';
 	$data['areaServed'] = array(
 		array( '@type' => 'Place', 'name' => 'AMBA (Ciudad de Buenos Aires y Gran Buenos Aires)' ),
