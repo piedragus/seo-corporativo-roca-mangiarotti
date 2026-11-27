@@ -383,3 +383,7 @@ Dónde figuraba el precio y qué dice ahora (cambios por base de datos, sin edit
 **Schema Product:** mu-plugin nuevo `roca-seo-precio-iva.php` (copia en `tools/mu-plugins/`), filtro `wpseo_schema_graph` con prioridad 30, después de `roca-seo-schema.php`. Deja `offers.price` = `1.63` y `UnitPriceSpecification` 1.63 USD/KGM con `valueAddedTaxIncluded: true`, igual que el feed. Sin tramos ni tipo E.
 
 Verificado con curl, después de purgar y precargar WP Rocket: fichas, madre, categoría, `llms.txt` y metas con las dos cifras; JSON-LD de las 2 fichas con `"price":"1.63"` y `"valueAddedTaxIncluded":true`; feed con `1.63 USD`. Capturas de celular en frankia: `~/capturas-20261125/iva-madre-m.png` e `iva-esf-m.png`.
+
+## 2026-11-27 — Tocar la foto del producto abre el visor (roca-galeria-toque.php)
+
+Mismo problema y arreglo que en Línea Magna: la capa .zoomImg tapaba el link y la foto no se podía abrir bien desde el celular (pedido por Agustín para cintas transportadoras; aplica a todos los productos). Script en línea con `nowprocket`. Probado con toque simulado en /producto/cintas-transportadoras/. Revertir: borrar el archivo y vaciar WP Rocket.
